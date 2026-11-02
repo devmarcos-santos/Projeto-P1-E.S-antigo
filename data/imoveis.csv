@@ -1,0 +1,7 @@
+id,titulo,tipo,bairro,cidade,preco,quartos,banheiros,area,imagem,destaque
+1,Apartamento com vista para o mar,Apartamento,Boa Viagem,Recife,850000,3,2,98,,sim
+2,Casa ampla com quintal,Casa,Casa Forte,Recife,1200000,4,3,220,,sim
+3,Studio mobiliado perto do metrô,Studio,Boa Vista,Recife,320000,1,1,35,,sim
+4,Cobertura duplex com piscina,Cobertura,Graças,Recife,2100000,4,4,280,,sim
+5,Apartamento compacto,Apartamento,Madalena,Recife,410000,2,1,58,,nao
+6,Casa térrea em condomínio,Casa,Aldeia,Camaragibe,690000,3,2,150,,nao

@@ -3,8 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imobiliária p1</title>
+    <title>Imobiliária P1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="{{ url_for('index') }}" class="logo">Imobiliária <span>P1</span></a>
+            <nav class="menu">
+                <a href="/imoveis">Imóveis</a>
+                <a href="/financiamento">Financiamento</a>
+                <a href="/empreendimentos">Empreendimentos</a>
+            </nav>
+            <div class="topo__acoes">
+                <a href="/login" class="botao botao--texto">Entrar</a>
+                <a href="/cadastro" class="botao botao--primario">Cadastrar</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__conteudo">
+                <h1>Encontre o imóvel certo para a sua próxima fase</h1>
+                <p>Casas, apartamentos e coberturas selecionados, com informações claras e contato direto com o anunciante.</p>
+                <div class="hero__acoes">
+                    <a href="/imoveis" class="botao botao--primario botao--grande">Ver imóveis</a>
+                    <a href="/financiamento" class="botao botao--claro botao--grande">Simular financiamento</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao container" id="destaques">
+            <div class="secao__cabecalho">
+                <h2>Imóveis em destaque</h2>
+                <a href="/imoveis" class="link-seta">Ver todos →</a>
+            </div>
+
+            {% if destaques %}
+            <div class="grade-imoveis">
+                {% for imovel in destaques %}
+                <article class="card-imovel">
+                    {% if imovel.imagem %}
+                    <img class="card-imovel__imagem" src="{{ url_for('static', filename=imovel.imagem) }}" alt="{{ imovel.titulo }}">
+                    {% else %}
+                    <div class="card-imovel__imagem card-imovel__imagem--vazia">{{ imovel.tipo }}</div>
+                    {% endif %}
+                    <div class="card-imovel__corpo">
+                        <span class="card-imovel__tipo">{{ imovel.tipo }}</span>
+                        <h3>{{ imovel.titulo }}</h3>
+                        <p class="card-imovel__local">{{ imovel.bairro }}, {{ imovel.cidade }}</p>
+                        <ul class="card-imovel__info">
+                            <li>{{ imovel.quartos }} quartos</li>
+                            <li>{{ imovel.banheiros }} banheiros</li>
+                            <li>{{ imovel.area }} m²</li>
+                        </ul>
+                        <p class="card-imovel__preco">{{ imovel.preco | reais }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="vazio">Nenhum imóvel em destaque no momento.</p>
+            {% endif %}
+        </section>
+
+        <section class="secao container">
+            <h2>Como podemos ajudar</h2>
+            <div class="grade-servicos">
+                <a href="/imoveis" class="card-servico">
+                    <h3>Comprar</h3>
+                    <p>Navegue pelos imóveis disponíveis, filtre por características e ordene pelo preço.</p>
+                </a>
+                <a href="/financiamento" class="card-servico">
+                    <h3>Financiar</h3>
+                    <p>Entenda como funciona o financiamento imobiliário antes de fechar negócio.</p>
+                </a>
+                <a href="/empreendimentos" class="card-servico">
+                    <h3>Empreendimentos</h3>
+                    <p>Conheça lançamentos e empreendimentos em construção na região.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container rodape__conteudo">
+            <p><strong>Imobiliária P1</strong> · Projeto de Engenharia de Software</p>
+            <p>&copy; 2026 Todos os direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
